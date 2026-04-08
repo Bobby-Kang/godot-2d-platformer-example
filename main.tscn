@@ -1,27 +1,31 @@
-[gd_scene format=3 uid="uid://i6kevj76hqmd"]
+[gd_scene load_steps=4 format=3]
 
 [ext_resource type="PackedScene" path="res://scenes/Player.tscn" id="1_player"]
+[ext_resource type="PackedScene" path="res://scenes/Monster.tscn" id="2_monster"]
 
 [sub_resource type="RectangleShape2D" id="1_floor"]
 size = Vector2(1152, 32)
 
-[node name="Main" type="Node2D" unique_id=1976700712]
+[node name="Main" type="Node2D"]
 
-[node name="Background" type="ColorRect" parent="." unique_id=512518886]
+[node name="Background" type="ColorRect" parent="."]
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0.53, 0.81, 0.98, 1)
 
-[node name="Player" parent="." unique_id=474467002 instance=ExtResource("1_player")]
-position = Vector2(576, 300)
+[node name="Player" parent="." instance=ExtResource("1_player")]
+position = Vector2(230, 300)
 
-[node name="Floor" type="StaticBody2D" parent="." unique_id=2081948659]
+[node name="Monster" parent="." instance=ExtResource("2_monster")]
+position = Vector2(921, 300)
+
+[node name="Floor" type="StaticBody2D" parent="."]
 position = Vector2(576, 632)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=387261901]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
 shape = SubResource("1_floor")
 
-[node name="Visual" type="ColorRect" parent="Floor" unique_id=549424383]
+[node name="Visual" type="ColorRect" parent="Floor"]
 offset_left = -576.0
 offset_top = -16.0
 offset_right = 576.0
