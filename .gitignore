@@ -1,0 +1,17 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# Godot editor temp files
+*.tmp
+godot_mcp_test_write.tmp
+
+# Export presets
+export_presets.cfg
+
+# OS generated
+.DS_Store
+Thumbs.db
+
+# Claude Code
+.claude/
