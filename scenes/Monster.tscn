@@ -1,17 +1,24 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene format=3 uid="uid://g38sapb0ggdr"]
 
-[ext_resource type="Script" path="res://scripts/monster.gd" id="1_monster"]
-[ext_resource type="Texture2D" path="res://assets/slime.svg" id="2_slime"]
+[ext_resource type="Script" uid="uid://c71kexr06x3pq" path="res://scripts/monster.gd" id="1_monster"]
+[ext_resource type="Texture2D" uid="uid://q0o4de1s450l" path="res://assets/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/goblin_idle_anim_f0.png" id="2_goblin"]
+[ext_resource type="PackedScene" path="res://scenes/HealthBar.tscn" id="3_healthbar"]
 
 [sub_resource type="RectangleShape2D" id="1_shape"]
-size = Vector2(56, 56)
+size = Vector2(13.25, 13)
 
-[node name="Monster" type="CharacterBody2D"]
+[node name="Monster" type="CharacterBody2D" unique_id=1856630710]
+scale = Vector2(4, 4)
 script = ExtResource("1_monster")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=442131983]
+position = Vector2(0.125, 0.25)
 shape = SubResource("1_shape")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_slime")
-texture_filter = 1
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=670494440]
+position = Vector2(0, -2.5)
+texture = ExtResource("2_goblin")
+
+[node name="HealthBar" parent="." instance=ExtResource("3_healthbar")]
+position = Vector2(0, -16)
+scale = Vector2(0.5, 0.5)

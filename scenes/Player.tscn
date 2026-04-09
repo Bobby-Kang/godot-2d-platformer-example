@@ -1,17 +1,39 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene format=3 uid="uid://cati14ubmnmhs"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_player"]
-[ext_resource type="Texture2D" path="res://assets/player.svg" id="2_icon"]
+[ext_resource type="Script" uid="uid://c3ol364rlfw5l" path="res://scripts/player.gd" id="1_player"]
+[ext_resource type="Texture2D" uid="uid://bdrh5s6cdlnrh" path="res://assets/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/dwarf_m_idle_anim_f0.png" id="2_dwarf"]
+[ext_resource type="Texture2D" uid="uid://b43bl752cpmg4" path="res://assets/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/weapon_axe.png" id="3_axe"]
+[ext_resource type="PackedScene" path="res://scenes/HealthBar.tscn" id="4_healthbar"]
 
 [sub_resource type="RectangleShape2D" id="1_shape"]
-size = Vector2(56, 60)
+size = Vector2(16, 20)
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="2_axe_shape"]
+radius = 4.0
+
+[node name="Player" type="CharacterBody2D" unique_id=601922206]
+scale = Vector2(4, 4)
 script = ExtResource("1_player")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=707110388]
 shape = SubResource("1_shape")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_icon")
-texture_filter = 1
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1627902722]
+position = Vector2(0, -4)
+texture = ExtResource("2_dwarf")
+
+[node name="AxeHitbox" type="Area2D" parent="."]
+monitoring = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AxeHitbox"]
+shape = SubResource("2_axe_shape")
+
+[node name="HealthBar" parent="." instance=ExtResource("4_healthbar")]
+position = Vector2(0, -18)
+scale = Vector2(0.5, 0.5)
+
+[node name="Axe" type="Sprite2D" parent="." unique_id=1000528488]
+position = Vector2(13.999999, 0.24999952)
+rotation = 0.43633232
+scale = Vector2(0.8743807, 0.8888973)
+texture = ExtResource("3_axe")

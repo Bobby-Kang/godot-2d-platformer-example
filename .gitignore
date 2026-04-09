@@ -2,9 +2,16 @@
 .godot/
 /android/
 
+# Godot auto-generated import files
+*.import
+
+# Mac OS X artifacts
+__MACOSX/
+
 # Godot editor temp files
 *.tmp
 godot_mcp_test_write.tmp
+preview.html
 
 # Export presets
 export_presets.cfg

@@ -1,33 +1,64 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene format=3 uid="uid://cxuijolm26v7h"]
 
-[ext_resource type="PackedScene" path="res://scenes/Player.tscn" id="1_player"]
-[ext_resource type="PackedScene" path="res://scenes/Monster.tscn" id="2_monster"]
+[ext_resource type="PackedScene" uid="uid://cati14ubmnmhs" path="res://scenes/Player.tscn" id="1_player"]
+[ext_resource type="PackedScene" uid="uid://g38sapb0ggdr" path="res://scenes/Monster.tscn" id="2_monster"]
+[ext_resource type="Texture2D" uid="uid://bddehvhjyb5wj" path="res://assets/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/floor_1.png" id="3_floor"]
+[ext_resource type="Texture2D" uid="uid://cfrdmwiohudha" path="res://assets/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/wall_mid.png" id="4_wall_mid"]
+[ext_resource type="Texture2D" uid="uid://cro3rwbcsv8f2" path="res://assets/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/floor_2.png" id="6_floor2"]
 
 [sub_resource type="RectangleShape2D" id="1_floor"]
 size = Vector2(1152, 32)
 
-[node name="Main" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="2_platform"]
+size = Vector2(192, 16)
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Main" type="Node2D" unique_id=1851725980]
+
+[node name="Background" type="ColorRect" parent="." unique_id=297293498]
 offset_right = 1152.0
 offset_bottom = 648.0
-color = Color(0.53, 0.81, 0.98, 1)
+color = Color(0.08, 0.06, 0.1, 1)
 
-[node name="Player" parent="." instance=ExtResource("1_player")]
-position = Vector2(230, 300)
+[node name="WallTiles" type="Sprite2D" parent="." unique_id=417178790]
+texture_repeat = 2
+position = Vector2(576, 324)
+texture = ExtResource("4_wall_mid")
+region_enabled = true
+region_rect = Rect2(0, 0, 1152, 648)
 
-[node name="Monster" parent="." instance=ExtResource("2_monster")]
-position = Vector2(921, 300)
+[node name="Player" parent="." unique_id=96212124 instance=ExtResource("1_player")]
+position = Vector2(192, 568)
 
-[node name="Floor" type="StaticBody2D" parent="."]
+[node name="Monster" parent="." unique_id=156612666 instance=ExtResource("2_monster")]
+position = Vector2(904, 583)
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=418058430]
 position = Vector2(576, 632)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1034140197]
 shape = SubResource("1_floor")
+debug_color = Color(0, 0.5953013, 0.728148, 0.41960785)
 
-[node name="Visual" type="ColorRect" parent="Floor"]
-offset_left = -576.0
-offset_top = -16.0
-offset_right = 576.0
-offset_bottom = 16.0
-color = Color(0.4, 0.27, 0.17, 1)
+[node name="Visual" type="Sprite2D" parent="Floor" unique_id=101736051]
+modulate = Color(1.9618065, 2, 2, 1)
+texture_repeat = 2
+position = Vector2(0, -8)
+texture = ExtResource("6_floor2")
+region_enabled = true
+region_rect = Rect2(0, 0, 1152, 16)
+
+[node name="Platform" type="StaticBody2D" parent="." unique_id=1144174151]
+position = Vector2(420, 528)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform" unique_id=799717198]
+position = Vector2(130, -56)
+one_way_collision = true
+shape = SubResource("2_platform")
+
+[node name="Visual" type="Sprite2D" parent="Platform" unique_id=1849053125]
+modulate = Color(1.8, 1.6, 1, 1)
+texture_repeat = 2
+position = Vector2(130, -64)
+texture = ExtResource("3_floor")
+region_enabled = true
+region_rect = Rect2(0, 0, 192, 16)
